@@ -40,33 +40,33 @@ unsigned char* create_bmp(unsigned int weight, unsigned int height)
 
 	unsigned int tmp;
 
-	bmpPtr[18] = weight & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
+	bmpPtr[21] = weight & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = weight & 0b00000000111111110000000000000000;
-	bmpPtr[19] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[20] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = weight & 0b00000000000000001111111100000000;
-	bmpPtr[20] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
-	bmpPtr[21] = weight & 0b00000000000000000000000011111111;;
+	bmpPtr[19] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[18] = weight & 0b00000000000000000000000011111111;;
 
-	bmpPtr[22] = height & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
+	bmpPtr[25] = height & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = height & 0b00000000111111110000000000000000;
-	bmpPtr[23] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[24] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = height & 0b00000000000000001111111100000000;
-	bmpPtr[24] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
-	bmpPtr[25] = height & 0b00000000000000000000000011111111;
+	bmpPtr[23] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[22] = height & 0b00000000000000000000000011111111;
 
-	bmpPtr[2] = fileSize & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
+	bmpPtr[5] = fileSize & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = fileSize & 0b00000000111111110000000000000000;
-	bmpPtr[3] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[4] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = fileSize & 0b00000000000000001111111100000000;
-	bmpPtr[4] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
-	bmpPtr[5] = fileSize & 0b00000000000000000000000011111111;;
+	bmpPtr[3] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[2] = fileSize & 0b00000000000000000000000011111111;;
 
-	bmpPtr[34] = bodySize & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
+	bmpPtr[37] = bodySize & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = bodySize & 0b00000000111111110000000000000000;
-	bmpPtr[35] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[36] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = bodySize & 0b00000000000000001111111100000000;
-	bmpPtr[36] = (tmp >> 8) & 0b00000000000000000000000011111111;
-	bmpPtr[37] = bodySize & 0b00000000000000000000000011111111;
+	bmpPtr[35] = (tmp >> 8) & 0b00000000000000000000000011111111;
+	bmpPtr[34] = bodySize & 0b00000000000000000000000011111111;
 
 #ifdef DEBUG2
 	std::cout << "bmpPtr[2] = " << static_cast<int>(bmpPtr[2]) << std::endl;
@@ -109,7 +109,7 @@ void write_bmp(const char* nameFile, unsigned char* bmp_ptr)
 		std::cout<<"Can't open file in write_bmp error 5"<<std::endl;
 		return;
 	}
-	unsigned long long int fileSize=(bmp_ptr[2]<<3*8)|(bmp_ptr[3]<<2*8)|(bmp_ptr[4]<<8)|(bmp_ptr[5]);
+	unsigned long long int fileSize=(bmp_ptr[5]<<3*8)|(bmp_ptr[4]<<2*8)|(bmp_ptr[3]<<8)|(bmp_ptr[2]);
 #ifdef DEBUG2
 	std::cout << "file size = " << fileSize << std::endl;
 #endif // DEBUG2
