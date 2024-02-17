@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 //#define DEBUG
-#define DEBUG2
+//#define DEBUG2
 
 unsigned char* create_bmp(unsigned int weight, unsigned int height)
 {
@@ -24,7 +24,7 @@ unsigned char* create_bmp(unsigned int weight, unsigned int height)
 	hex.close();
 	for (size_t i = 62; i < fileSize; ++i)
 	{
-		bmpPtr[i] = 0b00000000;
+		bmpPtr[i] = 0b11111111;
 	}
 
 #ifdef DEBUG2
