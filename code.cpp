@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 //#define DEBUG
-//#define DEBUG2
+#define DEBUG2
 
 unsigned char* create_bmp(unsigned int weight, unsigned int height)
 {
@@ -38,67 +38,35 @@ unsigned char* create_bmp(unsigned int weight, unsigned int height)
 #endif // DEBUG2
 
 
-	unsigned char tmp;
+	unsigned int tmp;
 
-	/*bmpPtr[18] = (weight >> 3*8)& 0b11111111;
-	tmp = (weight << 8)& 0b11111111;
-	bmpPtr[19] = (tmp >> 3*8)& 0b11111111;
-	tmp = (weight << 2*8)& 0b11111111;
-	bmpPtr[20] = (tmp >> 3*8)& 0b11111111;
-	tmp = (weight << 3*8)& 0b11111111;
-	bmpPtr[21] = (tmp >> 3*8)& 0b11111111;*/
 	bmpPtr[18] = weight & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = weight & 0b00000000111111110000000000000000;
 	bmpPtr[19] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = weight & 0b00000000000000001111111100000000;
 	bmpPtr[20] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
-	tmp = weight & 0b00000000000000000000000011111111;
-	bmpPtr[21] = (tmp >> 0 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[21] = weight & 0b00000000000000000000000011111111;;
 
-	/*bmpPtr[22] = (height >> 3*8) & 0b11111111;
-	tmp = (height << 8) & 0b11111111;
-	bmpPtr[23] = (tmp >> 3*8) & 0b11111111;
-	tmp = (height << 8*2) & 0b11111111;
-	bmpPtr[24] = (tmp >> 3*8) & 0b11111111;
-	tmp = (height << 8*3) & 0b11111111;
-	bmpPtr[25] = (tmp >> 3*8) & 0b11111111;*/
 	bmpPtr[22] = height & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = height & 0b00000000111111110000000000000000;
 	bmpPtr[23] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = height & 0b00000000000000001111111100000000;
 	bmpPtr[24] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
-	tmp = height & 0b00000000000000000000000011111111;
-	bmpPtr[25] = (tmp >> 0 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[25] = height & 0b00000000000000000000000011111111;
 
-	//bmpPtr[2] = fileSize & 0b00000000/**/00000000/**/00000000/**/11111111;         //(fileSize >> 3*8) & 0b11111111;
-	//tmp = (fileSize << 8) & 0b11111111;
-	//bmpPtr[3] = (tmp >> 3*8) & 0b11111111;
-	//tmp = (fileSize << 8*2) & 0b11111111;
-	//bmpPtr[4] = (tmp >> 3*8) & 0b11111111;
-	//tmp = (fileSize << 3*8) & 0b11111111;
-	//bmpPtr[5] = (tmp >> 3*8) & 0b11111111;
 	bmpPtr[2] = fileSize & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = fileSize & 0b00000000111111110000000000000000;
 	bmpPtr[3] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = fileSize & 0b00000000000000001111111100000000;
 	bmpPtr[4] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
-	tmp = fileSize & 0b00000000000000000000000011111111;
-	bmpPtr[5] = (tmp >> 0 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[5] = fileSize & 0b00000000000000000000000011111111;;
 
-	/*bmpPtr[34] = (bodySize >> 3*8) & 0b11111111;
-	tmp = (bodySize << 8) & 0b11111111;
-	bmpPtr[35] = (tmp >> 3*8) & 0b11111111;
-	tmp = (bodySize << 8*2) & 0b11111111;
-	bmpPtr[36] = (tmp >> 3*8) & 0b11111111;
-	tmp = (bodySize << 3*8) & 0b11111111;
-	bmpPtr[37] = (tmp >> 3*8) & 0b11111111;*/
 	bmpPtr[34] = bodySize & 0b11111111000000000000000000000000;         //(fileSize >> 3*8) & 0b11111111;
 	tmp = bodySize & 0b00000000111111110000000000000000;
 	bmpPtr[35] = (tmp >> 2 * 8) & 0b00000000000000000000000011111111;
 	tmp = bodySize & 0b00000000000000001111111100000000;
-	bmpPtr[36] = (tmp >> 1 * 8) & 0b00000000000000000000000011111111;
-	tmp = bodySize & 0b00000000000000000000000011111111;
-	bmpPtr[37] = (tmp >> 0 * 8) & 0b00000000000000000000000011111111;
+	bmpPtr[36] = (tmp >> 8) & 0b00000000000000000000000011111111;
+	bmpPtr[37] = bodySize & 0b00000000000000000000000011111111;
 
 #ifdef DEBUG2
 	std::cout << "bmpPtr[2] = " << static_cast<int>(bmpPtr[2]) << std::endl;
