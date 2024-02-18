@@ -1,17 +1,6 @@
 #ifndef BMP_FILES_PVM
 #define BMP_FILES_PVM
 
-//class BMPfile
-//{
-//public:
-//	BMPfile(unsigned int, unsigned int);
-//	void write_bmp(const char*);
-//	void changePixel(unsigned int, unsigned int, unsigned char) const;
-//};
-//BMPfile::BMPfile(unsigned int, unsigned int);
-//void BMPfile::write_bmp(const char*);
-//void BMPfile::changePixel(unsigned int, unsigned int, unsigned char) const;
-
 class BMPfile
 {
 	unsigned char* bmpPtr;
