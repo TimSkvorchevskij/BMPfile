@@ -109,7 +109,7 @@ int main()
 	catch (const char* error)
 	{
 		std::cout << error << std::endl;
-		std::system("pause");
+		system("pause");
 		return 1;
 	}
     return 0;
