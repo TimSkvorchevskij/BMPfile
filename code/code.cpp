@@ -101,8 +101,17 @@ public:
 
 int main()
 {
-	BMPfile first(40, 40);
-	first.write_bmp("../Resource/Hi.bmp");
+	try
+	{
+		BMPfile first(40, 40);
+		first.write_bmp("../Resource/Hi.bmp");
+	}
+	catch (const char* error)
+	{
+		std::cout << error << std::endl;
+		std::system("pause");
+		return 1;
+	}
     return 0;
 }
 
