@@ -80,3 +80,18 @@ void write_bmp(const char* nameFile, unsigned char* bmp_ptr)
 	file.close();
 	delete[] bmp_ptr;
 }
+
+void changePixel(unsigned char* bmp_ptr, unsigned int positionM, unsigned int positionN, unsigned char size)
+{
+	int realPositionM = ((positionM + 31) / 32) * 4;
+	int realPosition = realPositionM * positionN;
+	if (size == 0)
+	{
+		bmp_ptr[realPosition + 62] = 0b11111110;
+	}
+	else if (size == 1)
+	{
+		bmp_ptr[realPosition + 62] = 0b11111111;
+	}
+	
+}

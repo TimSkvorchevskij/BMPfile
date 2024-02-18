@@ -1,4 +1,5 @@
 all: ../applications/main
+	
 ../applications/main : code.o WBMP.o
 	g++ code.o WBMP.o -o ../applications/main
 code.o : code.cpp

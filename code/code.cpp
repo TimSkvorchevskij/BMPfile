@@ -2,7 +2,9 @@
 
 int main()
 {
-	write_bmp("../Resource/Hi.bmp", create_bmp(40, 40));
+	unsigned char* bmp_ptr = create_bmp(9, 9);
+	changePixel(bmp_ptr, 2, 2, 0);
+	write_bmp("../Resource/Hi.bmp", bmp_ptr);
     return 0;
 }
 
