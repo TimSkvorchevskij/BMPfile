@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "WorkingWithBmpFiles.h"
+#include "BMPfile.h"
 
 int main()
 {

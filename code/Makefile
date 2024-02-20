@@ -1,7 +1,7 @@
 CC=g++
-CFLAGS=-c -pedantic-errors -g -std=c++17
+CFLAGS=-c
 LDFLAGS=
-SOURCES=code.cpp
+SOURCES=code.cpp BMPfile.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=../applications/main
 
