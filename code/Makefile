@@ -1,6 +1,17 @@
-all: ../applications/main
-	
-../applications/main : code.o
-	g++ code.o -o ../applications/main
-code.o : code.cpp
-	g++ -c code.cpp -o code.o
+CC=g++
+CFLAGS=-c -pedantic-errors -g -std=c++17
+LDFLAGS=
+SOURCES=code.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=../applications/main
+
+all: $(SOURCES) $(EXECUTABLE)
+    
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	del $(OBJECTS)
