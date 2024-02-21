@@ -9,8 +9,8 @@ public:
 	BMPfile(unsigned int weight = 40, unsigned int height = 40);
 	BMPfile(const char* namefile);
 	~BMPfile();
-	void write_bmp(const char* nameFile);
-	void setPixel(unsigned int positionM, unsigned int positionN, unsigned char size) const;
+	void saveBmp(const char* nameFile);
+	void setPixel(unsigned int positionM, unsigned int positionN, bool size) const;
 	unsigned int getWidth()const;
 	unsigned int getHeight()const;
 	bool getPixel(unsigned int positionM, unsigned int positionN) const;

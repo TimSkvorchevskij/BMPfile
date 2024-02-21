@@ -3,7 +3,7 @@ CFLAGS=-c
 LDFLAGS=
 SOURCES=code.cpp BMPfile.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=../applications/main
+EXECUTABLE=../applications/main.exe
 
 all: $(SOURCES) $(EXECUTABLE)
     

@@ -78,7 +78,7 @@ BMPfile::~BMPfile()
 	bmpPtr = nullptr;
 }
 
-void BMPfile::write_bmp(const char* nameFile)
+void BMPfile::saveBmp(const char* nameFile)
 {
 	if (bmpPtr == nullptr)
 	{
@@ -98,30 +98,28 @@ void BMPfile::write_bmp(const char* nameFile)
 	file.close();
 }
 
-void BMPfile::setPixel(unsigned int positionM, unsigned int positionN, unsigned char size) const //не готово
+void BMPfile::setPixel(unsigned int positionM, unsigned int positionN, bool size) const //не проверено, опасно
 {
-	int realPositionM = ((positionM + 31) / 32) * 4;
-	int realPosition = realPositionM * positionN;
-	if (size == 0)
+	int Index = (positionM * positionN)/8 + 62;
+	if (size == 0)//черный
 	{
-		bmpPtr[realPosition + 62] = 0b11111110;
+		bmpPtr[Index] = bmpPtr[Index] & (~(1 << (7 - ((positionM * positionN) % 8))));
 	}
-	else if (size == 1)
+	else//белый
 	{
-		bmpPtr[realPosition + 62] = 0b11111111;
+		bmpPtr[Index] = bmpPtr[Index] | (1 << (7 - ((positionM * positionN) % 8)));
 	}
-
 }
 
-unsigned int BMPfile::getWidth()const
+unsigned int BMPfile::getWidth()const//не готово
 {
-
+	return 0;
 }
-unsigned int BMPfile::getHeight()const
+unsigned int BMPfile::getHeight()const//не готово
 {
-
+	return 0;
 }
-bool BMPfile::getPixel(unsigned int positionM, unsigned int positionN) const
+bool BMPfile::getPixel(unsigned int positionM, unsigned int positionN) const//не готово
 {
-
+	return 0;
 }

@@ -7,7 +7,7 @@ int main()
 	try
 	{
 		BMPfile first(40, 40);
-		first.write_bmp("../Resource/Hi.bmp");
+		first.saveBmp("../Resource/Hi.bmp");
 	}
 	catch (const char* error)
 	{
