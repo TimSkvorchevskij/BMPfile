@@ -1,0 +1,3 @@
+C:/Users/st117296/projects/PVM13.02.24/tests/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+C:/Users/st117296/projects/PVM13.02.24/tests/build/_deps/googletest-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/st117296/projects/PVM13.02.24/tests/build/_deps/googletest-subbuild/CMakeFiles/ZERO_CHECK.dir
