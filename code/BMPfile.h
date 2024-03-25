@@ -5,6 +5,10 @@
 class BMPfile
 {
 	unsigned char* bmpPtr;
+	unsigned *m_height;
+	unsigned *m_width;
+	
+	static const size_t HEADER_SIZE = 62;
 public:
 	BMPfile(unsigned int weight = 40, unsigned int height = 40);
 	BMPfile(const char* namefile);
