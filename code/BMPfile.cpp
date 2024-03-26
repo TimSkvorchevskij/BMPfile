@@ -88,10 +88,19 @@ void BMPfile::saveBmp(const char* nameFile)
 
 void BMPfile::setPixel(unsigned int row, unsigned int col, bool isWhite) const //проверено, не опасно
 {
-	if ( row >= *m_height )
-		throw std::invalid_argument("Bad row");
-	if ( col >= *m_width )
-		throw std::invalid_argument("Bad col");
+  if (row >= *m_height || col >= *m_width) {
+	  
+        long long int rowSize = ((row + 31) / 32) * 4;
+        long long int bodySize = rowSize * (*m_height);
+        long long int fileSize = bodySize + 62;
+        unsigned char* newBmpPtr = new unsigned char[fileSize];
+        std::memcpy(newBmpPtr, bmpPtr, fileSize);
+        *m_width = col;
+ 	*m_height = row;
+	  
+        delete[] bmpPtr;
+        bmpPtr = newBmpPtr;
+    }
 
 	const size_t BYTE_OFFSET = HEADER_SIZE + (((*m_width + 31) / 32) * 4 * (*m_height - row - 1))+ col/8;
 	const size_t BIT_OFFSET = 7 - col % 8;
